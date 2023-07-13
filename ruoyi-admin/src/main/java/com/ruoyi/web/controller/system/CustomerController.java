@@ -32,5 +32,18 @@ import com.ruoyi.common.core.page.TableDataInfo;
 public class CustomerController extends BaseController
 {
     @Autowired
-    private ICustomerService customerServic
+    private ICustomerService customerService;
+
+    /**
+     * 查询客户列表
+     */
+    @PreAuthorize("@ss.hasPermi('system:customer:list')")
+    @GetMapping("/list")
+    public TableDataInfo list(Customer customer)
+    {
+        startPage();
+        List<Customer> list = customerService.selectCustomerList(customer);
+        return getDataTable(list);
+    }
+
 }
