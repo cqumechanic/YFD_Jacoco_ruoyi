@@ -69,11 +69,11 @@ public class CaptchaController
             code = capText.substring(capText.lastIndexOf("@") + 1);
             image = captchaProducerMath.createImage(capStr);
         }
-        else if ("char".equals(captchaType))
-        {
-            capStr = code = captchaProducer.createText();
-            image = captchaProducer.createImage(capStr);
-        }
+//        else if ("char".equals(captchaType))
+//        {
+//            capStr = code = captchaProducer.createText();
+//            image = captchaProducer.createImage(capStr);
+//        }
 
         redisCache.setCacheObject(verifyKey, code, Constants.CAPTCHA_EXPIRATION, TimeUnit.MINUTES);
         // 转换流信息写出
